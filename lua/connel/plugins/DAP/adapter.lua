@@ -31,3 +31,16 @@ dap.adapters.python = function(cb, config)
 		})
 	end
 end
+
+dap.adapters.codelldb = {
+	type = "server",
+	host = "127.0.0.1",
+	port = "${port}",
+	executable = {
+		command = "/home/gunneo/.local/share/nvim/mason/bin/codelldb",
+		args = { "--port", "${port}" },
+		env = {
+			LLDB_LAUNCH_FLAG_LAUNCH_IN_TTY = "YES",
+		},
+	},
+}

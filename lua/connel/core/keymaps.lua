@@ -52,6 +52,7 @@ keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available 
 -- auto run file
 keymap.set("n", "<leader>ll", "<cmd>!lua %<CR>")
 keymap.set("n", "<leader>pp", "<cmd>!python3 %<CR>")
+keymap.set("n", "<leader>cpp", ":w<CR>:!clang++ -g -arch x86_64 % -o %:r && %:r<CR>", { noremap = true, silent = true })
 
 -- DAP
 keymap.set("n", "<leader>b", "<cmd>lua require('dap').toggle_breakpoint()<CR>")
