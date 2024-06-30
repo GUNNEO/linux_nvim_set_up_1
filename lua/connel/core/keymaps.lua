@@ -53,6 +53,12 @@ keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available 
 keymap.set("n", "<leader>ll", "<cmd>!lua %<CR>")
 keymap.set("n", "<leader>pp", "<cmd>!python3 %<CR>")
 
+-- DAP
+keymap.set("n", "<leader>b", "<cmd>lua require('dap').toggle_breakpoint()<CR>")
+keymap.set("n", "<leader>n", "<cmd>lua require('dap').continue()<CR>")
+keymap.set("n", "<leader>/", "<cmd>lua require('dap').step_over()<CR>")
+keymap.set("n", "<leader>.", "<cmd>lua require('dap').step_into()<CR>")
+
 -- leetcode
 keymap.set("n", "<leader>lp", "<cmd>Leet list<CR>")
 keymap.set("n", "<leader>lr", "<cmd>Leet run<CR>")

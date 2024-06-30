@@ -8,11 +8,6 @@ if not cmp_nvim_lsp_status then
 	return
 end
 
-local typescript_setup, typescript = pcall(require, "typescript")
-if not typescript_setup then
-	return
-end
-
 local keymap = vim.keymap
 
 -- enable keybinds for avaliable lsp server
@@ -33,8 +28,7 @@ local on_attach = function(client, bufnr)
 	keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
 	keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
 	keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
-
-	end
+end
 
 -- used to enable autocompletion (assign to every lsp server config)
 local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -46,14 +40,14 @@ lspconfig["pylsp"].setup({
 	on_attach = on_attach,
 })
 
--- lspconfig["clangd"].setup({
--- 	cmd = { "/opt/homebrew/opt/llvm/bin/clangd", "--background-index", "--header-insertion=never" },
--- 	capabilities = capabilities,
--- 	on_attach = function(client, bufnr)
--- 		client.server_capabilities.signatureHelpProvider = false
--- 		on_attach(client, bufnr)
--- 	end,
--- })
+lspconfig["clangd"].setup({
+	cmd = { "/usr/bin/clangd", "--background-index", "--header-insertion=never" },
+	capabilities = capabilities,
+	on_attach = function(client, bufnr)
+		client.server_capabilities.signatureHelpProvider = false
+		on_attach(client, bufnr)
+	end,
+})
 
 -- configure lua server (with special settings)
 lspconfig["lua_ls"].setup({
