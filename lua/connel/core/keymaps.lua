@@ -49,13 +49,20 @@ keymap.set("n", "<leader>fw", "<cmd>Telescope grep_string<cr>") -- find string u
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
 
+-- move between buffers
+keymap.set("n", "<leader>bn", "<cmd>:bn<CR>") -- move to the next buffer
+keymap.set("n", "<leader>bp", "<cmd>:bp<CR>") -- move to the previous buffer
+keymap.set("n", "<leader>bq", "<cmd>:Bdelete<CR>") -- close current buffer but do not close current window
+keymap.set("n", "<leader>bd", "<cmd>:bd<CR>")
+keymap.set("n", "<leader>bu", "<cmd>:bufdo bdelete<CR>") -- close all buffers but retain current window
+
 -- auto run file
 keymap.set("n", "<leader>ll", "<cmd>!lua %<CR>")
 keymap.set("n", "<leader>pp", "<cmd>!python3 %<CR>")
 keymap.set("n", "<leader>cpp", ":w<CR>:!clang++ -g -arch x86_64 % -o %:r && %:r<CR>", { noremap = true, silent = true })
 
 -- DAP
-keymap.set("n", "<leader>b", "<cmd>lua require('dap').toggle_breakpoint()<CR>")
+keymap.set("n", "<leader>tb", "<cmd>lua require('dap').toggle_breakpoint()<CR>")
 keymap.set("n", "<leader>n", "<cmd>lua require('dap').continue()<CR>")
 keymap.set("n", "<leader>/", "<cmd>lua require('dap').step_over()<CR>")
 keymap.set("n", "<leader>.", "<cmd>lua require('dap').step_into()<CR>")
